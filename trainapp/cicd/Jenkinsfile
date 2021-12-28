@@ -13,7 +13,7 @@ git credentialsId: 'github', url: 'https://github.com/dharma0907/Edurakaproj2.gi
 stage('docker build image') {
             // build docker image
             steps {
-                sh "docker build --no-cache -t train-v${env.BUILD_NUMBER} -f cicd/Dockerfile ."
+                sh "docker build --no-cache -t train-v${env.BUILD_NUMBER} -f trainapp/cicd/Dockerfile ."
             }
         }
         stage('docker tag the build') {
