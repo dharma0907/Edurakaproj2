@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('checkout git branch') {
             steps {
+git credentialsId: 'baff6a87-77ed-41ac-a493-13c511fa7e11', url: 'https://github.com/dharma0907/Edurakaproj2.git'
                      checkout scm
             }
         }
