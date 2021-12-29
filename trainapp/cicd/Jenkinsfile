@@ -27,7 +27,7 @@ steps{
 withCredentials([string(credentialsId: 'docker_pass', variable: 'docker')]) {
     // some block
 
- {            
+             
               sh "docker login -u dharma006 -p $docker https://demo.goharbor.io"    
                sh "docker push demo.goharbor.io/train/train:v${env.BUILD_NUMBER}"
            }
