@@ -22,12 +22,17 @@ stage('docker build image') {
                 sh "docker tag train-v${env.BUILD_NUMBER} demo.goharbor.io/train/train:v${env.BUILD_NUMBER}"    
             }
         }
-       stage('docker push image to harbor'){
-         steps{
+       stage('docker push image to harbor'){         
+steps{
+withCredentials([string(credentialsId: 'docker_pass', variable: 'docker')]) {
+    // some block
 
+ {            
+              sh "docker login -u dharma006 -p $docker https://demo.goharbor.io"    
                sh "docker push demo.goharbor.io/train/train:v${env.BUILD_NUMBER}"
            }
       }
+}
       stage('upade helm and run '){
         steps{
            sh "sudo /usr/local/bin/helm --kubeconfig /home/edureka/.kube/admin.conf  --install train harbor-qa/app-deploy --set image.tag='v${env.BUILD_NUMBER}' --namespace trainschdule -f cicd/charts"
