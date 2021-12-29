@@ -26,7 +26,7 @@ stage('docker build image') {
 steps{
 sh "echo haiiiiiiiiiiiiiiiiiiiiiiiiiii"
 withDockerRegistry([credentialsId: "harbor", url: "https://demo.goharbor.io/"]) {
-    // some block    
+    sh "echo horbor registry"    
                sh "docker push demo.goharbor.io/train/train:v${env.BUILD_NUMBER}"
            }
       }
