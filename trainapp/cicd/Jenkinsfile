@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'testServer' }
+    agent { label 'any' }
 // environment{
  //    DOCKER_HUB_CREDENTIALS = credentials('DOCKER_HUB_CRED')
   //   }
