@@ -34,7 +34,7 @@ withDockerRegistry(credentialsId: 'harborpassword', url: 'https://demo.goharbor.
 }
       stage('upade helm and run '){
         steps{
-           sh "/usr/local/bin/helm --kubeconfig /home/edureka/.kube/admin.conf  --install train harbor/train --set image.tag='v${env.BUILD_NUMBER}' --namespace trainschdule -f trainapp/cicd/values.yaml"
+           sh "/usr/local/bin/helm --kubeconfig /home/edureka/.kube/admin.conf upgrade --install train harbor/train --set image.tag='v${env.BUILD_NUMBER}' --namespace trainschdule -f trainapp/cicd/values.yaml"
          } 
       } 
 
