@@ -30,7 +30,7 @@ sh "echo haiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
 
 sh "echo haiiiiiiiiiiiiiiiiiiiiiiiiiii++++++++"
 
-withDockerRegistry(credentialsId: 'nexus', url: 'http://172.31.29.22:8081') {
+withDockerRegistry(credentialsId: 'nexus', url: '172.31.29.22:8081') {
 
     sh "echo nexus registry"    
                sh "docker push demo.goharbor.io/train/train:v${env.BUILD_NUMBER}"
