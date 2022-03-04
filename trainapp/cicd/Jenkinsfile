@@ -23,16 +23,17 @@ stage('docker build image') {
                 sh "docker tag train-v${env.BUILD_NUMBER} demo.goharbor.io/train/train:v${env.BUILD_NUMBER}"    
             }
         }
-       stage('docker push image to harbor'){         
+       stage('docker push image to nexus'){         
 steps{
 
 sh "echo haiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
 
 sh "echo haiiiiiiiiiiiiiiiiiiiiiiiiiii++++++++"
 
-withDockerRegistry(credentialsId: 'harborpassword', url: 'https://demo.goharbor.io') {
-    sh "echo horbor registry"    
-               sh "docker push demo.goharbor.io/train/train:v${env.BUILD_NUMBER}"
+withCredentials([usernameColonPassword(credentialsId: 'nexus', variable: 'docker_pass')]) {
+
+    sh "echo nexus registry"    
+               sh "docker push 172.31.29.22:8081/train/train:v${env.BUILD_NUMBER}"
            }
       }
 }
