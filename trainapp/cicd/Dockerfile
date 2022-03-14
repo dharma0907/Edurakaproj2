@@ -1,6 +1,6 @@
 FROM node:carbon
 WORKDIR /usr/src/app
-COPY trainapp/package*.json ./
+COPY /dharma/Edurakaproj2/trainapp/package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 8080
